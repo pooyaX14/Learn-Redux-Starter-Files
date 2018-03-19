@@ -1,4 +1,4 @@
-import { createStore, compse} from 'redux';
+import { createStore, compose} from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux'; //sync react-router with redux
 //to connect react-router with redux
 import { browserHistory } from 'react-router';
@@ -15,10 +15,13 @@ const defaultState = {
 	comments:comments
 }
 
+const enhancers = compose(
+	window.devToolsExtension? window.devToolsExtension() : fu => fu
+);
 //store accepts two arguments--> 1) reducer 2) defaultdState
-const store1 = createStore(rootReducer, defaultState);
+const store1 = createStore(rootReducer, defaultState, enhancers);
 
 //we'll use the history in reduxstagram file
-//export const history = syncHistoryWithStore(browserHistory, store);
+export const history = syncHistoryWithStore(browserHistory, store1);
 
 export default store1;

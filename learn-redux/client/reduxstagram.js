@@ -21,7 +21,7 @@ import store1, { history } from './store';
 //connect will allow to inject the data at whatever level you want
 const router = (
 	<Provider store={store1}>
-		<Router history={browserHistory} store={store1}>
+		<Router history={history} store={store1}>
 			<Route path="/" component= {App}>
 				<IndexRoute component={PhotoGrid}/>
 				<Route path="/view/:postId" component={Single}/>
